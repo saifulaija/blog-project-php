@@ -6,7 +6,7 @@ class adminBlog
     private $conn;
 
 
-/*     database connection start */
+/*     ----database connection Start------- */
 
     public function __construct()
     {
@@ -22,8 +22,15 @@ class adminBlog
         }
     }
 
-    /*     database connection end */
+    /*     -------database connection End -----*/
+
+/*  ------admin login by db Start---- */
 
 
+public function admin_login($data){
     
+}
+
+/*  --------admin login by db End------- */
+
 }

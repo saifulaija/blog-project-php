@@ -1,4 +1,4 @@
-<?php include_once('includes/head.php')?>
+<?php include_once('includes/head.php') ?>
 
 <body class="bg-primary">
     <div id="layoutAuthentication">
@@ -12,25 +12,20 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="" method="post">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" />
+                                            <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" name="admin_email" />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" />
+                                            <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="admin_pass" />
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                            </div>
+                                        <div class="form-group d-flex justify-items-center justify-content-middle">
+                                           
+                                            <input type="submit" name="admin_login" value="Login" class="btn btn-primary"/>
                                         </div>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="password.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="index.html">Login</a>
-                                        </div>
+                                      
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">
@@ -57,7 +52,7 @@
             </footer>
         </div>
     </div>
-    <?php include_once('includes/script.php')?>
+    <?php include_once('includes/script.php') ?>
 </body>
 
 </html>
