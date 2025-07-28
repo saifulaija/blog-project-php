@@ -71,11 +71,41 @@ class adminBlog
 
         $query="INSERT INTO category(cat_name,cat_des) value('$cat_name','$cat_des')";
         if(mysqli_query($this->conn,$query)){
+            // header("location:manage_category.php");
             return "Category added successfully";
         }
     }
 
     /*  --------Sent Category Name to DB End------- */
+
+
+    /*  --------Get Category Data from DB Start------- */
+
+     public function display_category(){
+        $query="SELECT * FROM category";
+
+        if(mysqli_query($this->conn,$query)){
+            $category=mysqli_query($this->conn,$query);
+            return $category;
+        }
+     }
+
+
+    /*  --------Get Category Data from DB End------- */
+
+    /*  --------Delete Category Data from DB Start------- */
+
+public  function delete_category($id){
+    $query="DELETE FROM category WHERE cat_id=$id";
+
+    if(mysqli_query($this->conn,$query)){
+        return "Category deleted successfully";
+    }
+}
+
+
+
+    /*  --------Delete Category Data from DB End------- */
 
 
 }
