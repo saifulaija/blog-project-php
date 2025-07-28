@@ -9,20 +9,15 @@
              </button>
              <div class="collapse navbar-collapse" id="navbarResponsive">
                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item active">
-                         <a class="nav-link" href="index.html">Home
-                             <span class="sr-only">(current)</span>
+
+                 <?php while($category=mysqli_fetch_assoc($get_category)){?>
+                     <li class="nav-item">
+                         <a class="nav-link" href="index.html">
+                           <?php echo $category['cat_name'];?>
                          </a>
                      </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="about.html">About Us</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="blog.html">Blog Entries</a>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="post-details.html">Post Details</a>
-                     </li>
+                     <?php }?>
+                     
                      <li class="nav-item">
                          <a class="nav-link" href="contact.html">Contact Us</a>
                      </li>

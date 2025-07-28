@@ -40,7 +40,7 @@ if (isset($_GET['adminlogout'])) {
                         } elseif ($view == "manage_category") {
                             include("view/manage_category_view.php");
                         } elseif ($view == "manage_post") {
-                            include("view/manage_post.php");
+                            include("view/manage_post_view.php");
                         }
                     }
 

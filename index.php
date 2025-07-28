@@ -1,3 +1,18 @@
+
+<?php
+include("admin/Class/function.php");
+$obj=new adminBlog();
+
+$get_category=$obj->display_category();
+
+
+
+
+
+
+?>
+
+
 <?php include_once('includes/head.php') ?>
 
 <body>
