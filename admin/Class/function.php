@@ -46,4 +46,16 @@ class adminBlog
     }
 
     /*  --------admin login by db End------- */
+
+
+    /*  --------admin Logout Start------- */
+    public function adminLogout() {
+        unset($_SESSION['adminID']);
+        unset($_SESSION['admin_name']);
+        header('location:index.php');
+    }
+
+
+
+    /*  --------admin Logout  End------- */
 }
