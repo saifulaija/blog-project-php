@@ -54,8 +54,28 @@ class adminBlog
         unset($_SESSION['admin_name']);
         header('location:index.php');
     }
-
-
-
+    
     /*  --------admin Logout  End------- */
+
+
+
+
+    
+    /*  --------Sent Category Name to DB Start------- */
+
+
+    public function add_category($data){
+
+        $cat_name=$data['cat_name'];
+        $cat_des=$data['cat_des'];
+
+        $query="INSERT INTO category(cat_name,cat_des) value('$cat_name','$cat_des')";
+        if(mysqli_query($this->conn,$query)){
+            return "Category added successfully";
+        }
+    }
+
+    /*  --------Sent Category Name to DB End------- */
+
+
 }
