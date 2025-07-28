@@ -1,3 +1,20 @@
+<?php
+include("Class/function.php");
+
+$obj = new adminBlog();
+
+if (isset($_POST['admin_login'])) {
+    $obj->admin_login($_POST);
+}
+session_start();
+
+$id = $_SESSION["adminID"];
+
+if ($id) {
+    header("location:dashboard.php");
+}
+?>
+
 <?php include_once('includes/head.php') ?>
 
 <body class="bg-primary">
@@ -22,10 +39,10 @@
                                             <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="admin_pass" />
                                         </div>
                                         <div class="form-group d-flex justify-items-center justify-content-middle">
-                                           
-                                            <input type="submit" name="admin_login" value="Login" class="btn btn-primary"/>
+
+                                            <input type="submit" name="admin_login" value="Login" class="btn btn-primary" />
                                         </div>
-                                      
+
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">

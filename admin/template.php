@@ -1,3 +1,19 @@
+<?php
+
+include("Class/function.php");
+session_start();
+
+$id = $_SESSION['adminID'];
+
+if ($id == null) {
+    header("location:index.php");
+}
+
+
+
+?>
+
+
 <?php include_once('includes/head.php') ?>
 
 <body class="sb-nav-fixed">
