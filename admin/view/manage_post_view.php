@@ -28,7 +28,10 @@ $posts = $obj->display_post();
                     <td><?php echo $postData['post_id'] ?></td>
                     <td><?php echo $postData['post_title'] ?></td>
                     <td><?php echo $postData['cat_name'] ?></td>
-                    <td><img height="50px" src="../upload/<?php echo $postData['post_img'] ?>" alt=""></td>
+                    <td><img height="50px" src="../upload/<?php echo $postData['post_img'] ?>" alt="">
+                    <br>
+                    <a href="edit_img.php?status=editimg&&id=<?php echo $postData['post_id']?>">change</a>
+                </td>
                     <td><?php if ($postData['post_status'] == 1) {
                             echo 'Published';
                         } else {

@@ -204,4 +204,18 @@ public  function delete_category($id){
             return $posts;
         }
     }
+
+    public function edit_image($data){
+
+        $img_id=$data['edit_img_id'];
+        $img_name=$_FILES['change_img']['name'];
+        $tmp_img=$_FILES['change_img']['tmp_name'];
+        $query="UPDATE posts SET post_img='$img_name' WHERE post_id=$img_id";
+
+        if(mysqli_query($this->conn,$query)){
+            move_uploaded_file($tmp_img, '../upload/' . $img_name);
+            return "Thumbnail updated successfully";
+        }
+
+    }
 }
