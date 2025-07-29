@@ -49,28 +49,30 @@ class adminBlog
 
 
     /*  --------admin Logout Start------- */
-    public function adminLogout() {
+    public function adminLogout()
+    {
         unset($_SESSION['adminID']);
         unset($_SESSION['admin_name']);
         header('location:index.php');
     }
-    
+
     /*  --------admin Logout  End------- */
 
 
 
 
-    
+
     /*  --------Sent Category Name to DB Start------- */
 
 
-    public function add_category($data){
+    public function add_category($data)
+    {
 
-        $cat_name=$data['cat_name'];
-        $cat_des=$data['cat_des'];
+        $cat_name = $data['cat_name'];
+        $cat_des = $data['cat_des'];
 
-        $query="INSERT INTO category(cat_name,cat_des) value('$cat_name','$cat_des')";
-        if(mysqli_query($this->conn,$query)){
+        $query = "INSERT INTO category(cat_name,cat_des) value('$cat_name','$cat_des')";
+        if (mysqli_query($this->conn, $query)) {
             // header("location:manage_category.php");
             return "Category added successfully";
         }
@@ -81,27 +83,29 @@ class adminBlog
 
     /*  --------Get Category Data from DB Start------- */
 
-     public function display_category(){
-        $query="SELECT * FROM category";
+    public function display_category()
+    {
+        $query = "SELECT * FROM category";
 
-        if(mysqli_query($this->conn,$query)){
-            $category=mysqli_query($this->conn,$query);
+        if (mysqli_query($this->conn, $query)) {
+            $category = mysqli_query($this->conn, $query);
             return $category;
         }
-     }
+    }
 
 
     /*  --------Get Category Data from DB End------- */
 
     /*  --------Delete Category Data from DB Start------- */
 
-public  function delete_category($id){
-    $query="DELETE FROM category WHERE cat_id=$id";
+    public  function delete_category($id)
+    {
+        $query = "DELETE FROM category WHERE cat_id=$id";
 
-    if(mysqli_query($this->conn,$query)){
-        return "Category deleted successfully";
+        if (mysqli_query($this->conn, $query)) {
+            return "Category deleted successfully";
+        }
     }
-}
 
 
 
@@ -190,31 +194,59 @@ public  function delete_category($id){
     /*  --------Delete Category Data from DB End------- */
 
 
-    public function display_post(){
-        $query="SELECT * FROM post_with_ctg";
-        if(mysqli_query($this->conn,$query)){
-            $posts=mysqli_query($this->conn,$query);
+    public function display_post()
+    {
+        $query = "SELECT * FROM post_with_ctg";
+        if (mysqli_query($this->conn, $query)) {
+            $posts = mysqli_query($this->conn, $query);
             return $posts;
         }
     }
-    public function display_post_public(){
+    public function display_post_public()
+    {
         $query = "SELECT * FROM post_with_ctg WHERE post_status = 1";
-        if(mysqli_query($this->conn,$query)){
-            $posts=mysqli_query($this->conn,$query);
+        if (mysqli_query($this->conn, $query)) {
+            $posts = mysqli_query($this->conn, $query);
             return $posts;
         }
     }
 
-    public function edit_image($data){
+    public function edit_image($data)
+    {
 
-        $img_id=$data['edit_img_id'];
-        $img_name=$_FILES['change_img']['name'];
-        $tmp_img=$_FILES['change_img']['tmp_name'];
-        $query="UPDATE posts SET post_img='$img_name' WHERE post_id=$img_id";
+        $img_id = $data['edit_img_id'];
+        $img_name = $_FILES['change_img']['name'];
+        $tmp_img = $_FILES['change_img']['tmp_name'];
+        $query = "UPDATE posts SET post_img='$img_name' WHERE post_id=$img_id";
 
-        if(mysqli_query($this->conn,$query)){
+        if (mysqli_query($this->conn, $query)) {
             move_uploaded_file($tmp_img, '../upload/' . $img_name);
             return "Thumbnail updated successfully";
+        }
+    }
+
+
+    public function get_post_info($id)
+    {
+        $query = "SELECT * FROM post_with_ctg WHERE post_id=$id";
+        if (mysqli_query($this->conn, $query)) {
+            $post_info = mysqli_query($this->conn, $query);
+            $post = mysqli_fetch_assoc($post_info);
+            return $post;
+        }
+    }
+
+
+    public function update_post($data){
+        $post_title=$data['change_title'];
+        $post_content=$data['change_content'];
+        $post_id=$data['edit_post_id'];
+
+        $query="UPDATE posts SET post_title='$post_title', post_content='$post_content' WHERE post_id=$post_id";
+
+
+        if(mysqli_query($this->conn,$query)){
+            return "Post updated successfully";
         }
 
     }
